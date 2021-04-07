@@ -58,7 +58,7 @@ Cross-Platform
   * Qt Creator (particularly for GUI development)
   * compilers (*not* an IDE): gcc and clang
 
-### DEMO: Tools
+### **DEMO: Tools**
 
 https://isocpp.org (official website of the Standards Committee)
   * https://isocpp.org/get-started
@@ -97,9 +97,9 @@ C++ is case-sensitive
 
 Most lines (i.e., **statements**) are terminated with `;`
 
-### DEMO: Smallest
+### **DEMO: Smallest**
 
-cf. `Small.cpp` (this is the smallest possible C++ applciation!)
+cf. `Small.cpp` (this is the smallest possible C++ application!)
 
 N.B. Run the `Small.cpp` application using the IDE (e.g., Visual Studio, Visual Studio Code with `Code Runner` extention, etc.) or via command-line compilation
 
