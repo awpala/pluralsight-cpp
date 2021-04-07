@@ -131,7 +131,7 @@ To "build" your source code into executable code...
 1. First, the code is compiled
 2. If that succeeds, then the compiler output is linked
 3. The resulting executable is what you run as the application
-  * The executable can be run from inside the IDE, or from a command prompt, and even by double-clicking via the operating systems file navigation GUI
+    * The executable can be run from inside the IDE, or from a command prompt, and even by double-clicking via the operating systems file navigation GUI
 
 Console applications have a particular **structure** you must follow, i.e.,:
 ```cpp
