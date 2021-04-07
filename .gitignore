@@ -1,0 +1,13 @@
+# regex to ignore compiled object output files
+# reference: https://codicious.wordpress.com/2018/06/06/how-would-you-exclude-all-extension-less-executable-from-your-repo/
+*
+!*.*
+!*/
+
+# don't ignore makefiles (but ignore object files)
+# reference: https://www.cs.colby.edu/maxwell/courses/tutorials/maketutor/
+!makefile
+*.o
+
+# ignore vscode config files
+*.json
