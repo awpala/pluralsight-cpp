@@ -29,7 +29,7 @@ int main()
   } // N.B. `item` goes out of scope here
   cout << '\n';
 
-	// nums.push_back("Kate"); // not permissible -- nums can only hold int's
+  // nums.push_back("Kate"); // not permissible -- nums can only hold int's
 
 
   vector<string> words;
@@ -48,15 +48,15 @@ int main()
   }
   cout << '\n';
 
-	// using vector member function size()
+  // using vector member function size()
   cout << "int vector nums has " << nums.size() << " elements." << '\n';
 
-	// accessing vector elements via operator [] (N.B. vectors have zero-based indices)
+  // accessing vector elements via operator [] (N.B. vectors have zero-based indices)
   nums[5] = 3;
   nums[6] = -1;
   nums[1] = 99;
 
-	// all three for loops below produce equivalent output
+  // all three for loops below produce equivalent output
   for (auto item : nums)
   {
     cout << item << " ";
@@ -75,7 +75,7 @@ int main()
   }
   cout << '\n';
 
-	// using std::sort from `algorithm` library on a vector container
+  // using std::sort from `algorithm` library on a vector container
   sort(begin(words), end(words));
   for (auto item : words)
   {
@@ -83,11 +83,11 @@ int main()
   }
   cout << '\n';
 
-	// using std::count from `algorithm` library on a vector container
+  // using std::count from `algorithm` library on a vector container
   int threes = count(begin(nums), end(nums), 3);
   cout << "vector of ints has " << threes << " elements with value 3" << '\n';
 
-	// using std::count from `algorithm` on a string
+  // using std::count from `algorithm` on a string
   int tees = count(begin(words[0]), end(words[0]), 't'); // N.B. words[0] is a string
   cout << "first word has " << tees << " letter t's" << '\n';
 
