@@ -8,7 +8,7 @@ Visual Studio provides a *Create New Project* command, which can be used to crea
 
 IDEs may create files you do not need (e.g., `readme.txt`)
 
-However, IDEs also create files that *are* valuable, including important configurations; therefore, it is ill-advised to delete everything except for `.cpp` and `.h` files in a IDE-based project
+However, IDEs also create files that *are* valuable, including important configurations; therefore, it is ill-advised to delete everything except for `.cpp` and `.h` files in an IDE-based project
   * If you do not know the specific purpose of a given file(s), it is best to leave it alone, in order to prevent later time expenditure to resolve potential issues related to this
 
 IDEs may also put content in files that you do not need
@@ -34,7 +34,7 @@ $ Small.exe -g Hello 12
 $ g++ a.cpp b.cpp
 ```
 
-N.B. Observe that the command-line compilation (i.e., `g++ ...`) is an illustrative example of this type of command-line application
+N.B. Observe that the command-line compilation (i.e., `$ g++ ...`) is an illustrative example of this type of command-line application
 
 If an IDE creates a boilerplate project having this variant of `main`, it is generally fine to remove the arguments, unless they are specifically required for the application in question
 
@@ -91,7 +91,7 @@ The simplest makefile is as follows:
 ```makefile
 # `all` is the default target
 all:
-  g++ -std=c++11 -Wall -Wextra -Wpedantic -Werror Account.cpp Transaction.cpp SimpleClasses.cpp -o Simple
+	g++ -std=c++11 -Wall -Wextra -Wpedantic -Werror Account.cpp Transaction.cpp SimpleClasses.cpp -o Simple
 ```
 
 N.B. Simply calling this makefile `makefile` (without a file extension) will render it directly callable as the default makefile, by issuing command `make` from the directory containing this makefile (however, this name is not compulsory)
