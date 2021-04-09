@@ -83,7 +83,7 @@ Console applications ssimply do the following:
 
 N.B. Later in your development, you will typically use a framework for a specific application domain (e.g., user interfaces, phone applications, etc.)--fundamentally, these will still be based around the core syntax discussed in this course
 
-## **DEMO**: Visual studio Hello World
+## **DEMO**: Visual Studio Hello World
 
 cf. video for this topic
 
