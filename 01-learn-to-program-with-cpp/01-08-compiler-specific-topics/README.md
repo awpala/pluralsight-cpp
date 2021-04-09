@@ -120,16 +120,16 @@ Consider a more complicated example of a makefile named `changesonly` as follows
 all: Simple
 
 Simple: Account.o Transaction.o SimpleClasses.o
-  g++ Account.o Transaction.o SimpleClasses.o -o Simple
+	g++ Account.o Transaction.o SimpleClasses.o -o Simple
 
 Account.o: Account.cpp Account.h Transaction.h
-  g++ -c -std=c++11 -Wall -Wextra -Wpedantic -Werror Account.cpp
+	g++ -c -std=c++11 -Wall -Wextra -Wpedantic -Werror Account.cpp
 
 Transaction.o: Transaction.cpp Transaction.h
-  g++ -c -std=c++11 -Wall -Wextra -Wpedantic -Werror Transaction.cpp
+	g++ -c -std=c++11 -Wall -Wextra -Wpedantic -Werror Transaction.cpp
 
 SimpleClasses.o: SimpleClasses.cpp Account.h
-  g++ -c -std=c++11 -Wall -Wextra -Wpedantic -Werror SimpleClasses.cpp
+	g++ -c -std=c++11 -Wall -Wextra -Wpedantic -Werror SimpleClasses.cpp
 ```
 
 In the example above, if anything after `:` is newer than the entity before `:` (i.e., changed relatively more recently), then the command on the next line is executed
