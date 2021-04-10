@@ -74,7 +74,7 @@ Accum<string> strings("");
 
 N.B. Template implementations are typically in header files (i.e., as opposed to implementation in a separate source file)
 
-N.B. C++17 introduced automatic type deduction for templated classes (e.g., `Accum<> integers(0);`, `Accum<> strings("")`, etc.)
+N.B. C++17 introduced automatic type deduction for templated classes (e.g., `Accum<> integers(0);`, `Accum<> strings(std::string(""))`, etc.)
 
 ### **DEMO: Template Classes**
 
