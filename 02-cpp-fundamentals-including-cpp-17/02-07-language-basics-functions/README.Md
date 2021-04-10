@@ -1,4 +1,4 @@
-# Section 6 - Language Basics: Functions
+# Section 7 - Language Basics: Functions
 
 ## Free Functions
 
