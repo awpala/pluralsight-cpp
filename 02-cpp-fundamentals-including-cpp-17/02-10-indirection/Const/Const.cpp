@@ -8,7 +8,7 @@ int DoubleIt(int const& x) // declaring as `const&` prevents modification of `x`
 
 int main()
 {
-	/* `const` with references */
+  /* `const` with references */
   int i = 3;
 
   int const ci = 3; // declare a `const`
@@ -24,13 +24,13 @@ int main()
   // int& ncri = ci; // error -- cannot create a non-`const` reference to a `const` (if this were permitted, `ncri` could be used to change `i`, which is a `const`)
   
 
-	/* function call by reference */
+  /* function call by reference */
   int j = 10;
   int DoubleJ = DoubleIt(j); // int variable argument, passed by reference
   int DoubleTen = DoubleIt(10); // int literal argument, passed by reference
 
 
-	/* working with objects */
+  /* working with objects */
   Person Kate("Kate", "Gregory", 234);
   Kate.SetNumber(235);
   Person const cKate = Kate; // `const` object
