@@ -7,8 +7,8 @@ So far, all of the variables seen in this course have been **local variables**, 
 
 However, it is sometimes desired for variables to have a lifetime (i.e., scope) beyond the execution of a function; C++ provides a construct called the **free store** for this purpose (i.e., longer-lived variables)
 
-N.B. Local variables are often described as being "on the **stack** (or, equivalently, having **stack semantics**), while longer-lived variables are described as being "on the **heap**" (an alternative name for the free store)
-  * The "heap" terminology is a carry-over from C
+N.B. Local variables are often described as being "on the **stack**" (or, equivalently, having **stack semantics**), while longer-lived variables are described as being "on the **heap**" (an alternative name for the free store)
+  * The "heap" nomenclature is a carry-over from C
 
 To retrieve allocated memory from the free store, C++ provides the operator `new`, which returns a pointer to the object or instance and runs the constructor to initialize the object
 
