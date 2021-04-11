@@ -15,7 +15,7 @@ To retrieve allocated memory from the free store, C++ provides the operator `new
 To subsequently tear down, C++ provides the corresponding operator `delete`, which releases the free-store memory for subsequent re-use and runs the destructor to perform cleanup of the object
 
 N.B. There is slightly different syntax for "raw arrays" using `[]`, however, modern C++ generally avoids using "raw arrays" (instead, data structures from the Standard Library are used)
-  * This course will not discuss "raw arrays" for this reason
+  * This course (which is focused on modern C++ best practices) will not discuss "raw arrays" for this reason
 
 ### **DEMO: The Free Store**
 
