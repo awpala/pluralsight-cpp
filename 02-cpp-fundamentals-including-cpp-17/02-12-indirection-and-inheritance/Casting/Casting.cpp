@@ -8,20 +8,20 @@ using std::endl;
 
 int main()
 {
-	/* `static_cast` example */
+  /* `static_cast` example */
   Tweeter t("Kate","Gregory",123,"@gregcons");
   Person* p = &t;
-	// Tweeter* pt = (Tweeter*)p; // C-style cast -- not recommended, use templated cast instead
+  // Tweeter* pt = (Tweeter*)p; // C-style cast -- not recommended, use templated cast instead
   Tweeter* pt = static_cast<Tweeter*>(p); // templated cast to `Tweeter` pointer 
   cout << pt->GetName() << endl;
 
   //int i = 3;
   //Tweeter* pi = static_cast<Tweeter*>(&i); // `static_cast` provides type safety -- it will not simply permit any arbitrary casting (e.g., from `int*` to `Tweeter*`, which is nonsensical)
 
-	cout << endl;
+  cout << endl;
 
 
-	/* `dynamic_cast` example */
+  /* `dynamic_cast` example */
   Resource r("local");
   Tweeter* pt2;
   cout << "Use Resource (r) or Tweeter (t)? ";
