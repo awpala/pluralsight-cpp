@@ -19,9 +19,9 @@ int main()
   {
     cout << i << '\n';
   }
-	cout << endl;
+  cout << endl;
 
-	// vectors (and other containers) manage their memory automatically
+  // vectors (and other containers) manage their memory automatically
   Resource r("local"); // `Resource` is a class with a `std::string` member variables
   { //braces for scope
     cout << "------------------------------" << '\n';
