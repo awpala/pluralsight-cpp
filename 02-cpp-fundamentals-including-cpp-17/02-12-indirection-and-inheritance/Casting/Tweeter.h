@@ -2,8 +2,7 @@
 #include "Person.h"
 #include <string>
 
-class Tweeter :
-  public Person
+class Tweeter : public Person
 {
 private:
   std::string twitterhandle;
