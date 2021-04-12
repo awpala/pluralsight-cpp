@@ -56,7 +56,6 @@ int main()
     *badPointer = 3;
     cout << *badPointer << endl;
   }
-  cout << badPointer << endl;
 
   return 0;
 }

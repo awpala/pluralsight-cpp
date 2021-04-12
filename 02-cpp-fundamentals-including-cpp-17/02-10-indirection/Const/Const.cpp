@@ -21,7 +21,7 @@ int main()
   int const & cri = i; // `const` reference to `i`
   //cri = 6; // error -- cannot change a `const` reference (i.e., while `i` can be changed, `cri` cannot)
 
-  // int& ncri = ci; // error -- cannot create a non-`const` reference to a `const` (if this were permitted, `ncri` could be used to change `i`, which is a `const`)
+  // int& ncri = ci; // error -- cannot create a non-`const` reference to a `const` (if this were permitted, `ncri` could be used to change `ci`, which is a `const`)
   
 
   /* function call by reference */
