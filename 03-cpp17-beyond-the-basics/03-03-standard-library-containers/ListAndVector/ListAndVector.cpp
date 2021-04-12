@@ -41,12 +41,12 @@ int main()
   auto vectormilliseconds = TimeFunc([&]() {BuildVector(size,v); }); // N.B. Using lambda to call build function (lambdas are discussed later in the course)
   auto listmilliseconds = TimeFunc([&]() {BuildList(size,l); });
 
-	cout << "Time required to insert " << size 
-		<< " sorted random integers into std::vector : "
-		<< vectormilliseconds << " ms" << endl;
-	cout << "Time required to insert " << size 
-		<< " sorted random integers into std::list   : "
-		<< listmilliseconds << " ms" << endl;
+  cout << "Time required to insert " << size 
+    << " sorted random integers into std::vector : "
+    << vectormilliseconds << " ms" << endl;
+  cout << "Time required to insert " << size 
+    << " sorted random integers into std::list   : "
+    << listmilliseconds << " ms" << endl;
 
   return 0;
 }
