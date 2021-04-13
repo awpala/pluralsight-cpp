@@ -32,7 +32,7 @@ Resource& Resource::operator=(Resource&& r)
   if (this != &r) // guard against self-assignment
   {
     name = std::move(r.name);
-    r.name.clear();
+    r.name.clear(); // N.B. `clear()` is used here due to the small-string optimization of `std::string` (advanced topic, beyond the scope of this course)
     //  cout << "move assigning " << name << '\n';
   }
  return *this;
