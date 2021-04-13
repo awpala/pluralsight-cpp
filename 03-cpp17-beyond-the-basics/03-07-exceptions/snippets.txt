@@ -1,0 +1,25 @@
+
+	try
+	{
+
+
+
+	}
+	catch (out_of_range & e)
+	{
+		cout << " out of range exception " << e.what();
+	}
+	catch (exception & e)
+	{
+		cout << e.what();
+	}
+
+
+		Person Kate("Kate", "Gregory", 0);
+
+	Noise n1("beep 1");
+
+
+		Noise n2("bloop 2");
+
+	Noise np("Speaking");
