@@ -36,6 +36,44 @@ N.B. The position of `'` is arbitrary (the compiler ignores it altogether), howe
 
 ## Binary Values
 
+C++14 introduced the write binary literals via prefix `0b` (or `0B`) e.g.,:
+```cpp
+auto d = 0b01000111;
+auto word = 0b01000111'01000011; // can also use digit separator `'` in binary literals
+```
 
+## Automatic Return Type Deduction
 
+C++14 introduced the ability for the compiler to automatically deduce the return type of functions (via keyword `auto` as the return type), e.g.,:
+```cpp
+auto AreaOfSquare(double side) {
+  return side * side; // compiler deduces return type of `double`
+}
+```
 
+Automatic return type deduction is particularly useful for templates and cumbersome/"noisy" types, e.g.,:
+```cpp
+auto ComplexFunctionTemplate(...) {
+  // complex template code ...
+  return result;
+}
+```
+
+Automatic return type deduction is also useful for avoiding the need to indicate the return type *twice*, e.g.,:
+```cpp
+auto BuildCoolMap() {
+  std::map<std::string, SomeLongValueType> result;
+  // fill the `result` object
+  return result; // `auto` deduces the type `std::map<std::string, SomeLongValueType>`
+}
+```
+
+There is a balance/trade-off in using `auto` return type deduction: looking *inside* the function implementation vs. *not* having *repeated* type information (particularly when dealing with long, cumbersome types)
+
+## Summary
+
+Digit separators promote writing clearer numeric literals
+
+Binary literals are convenient for working with binary forms
+
+Automatic return type deduction simplifies code by avoiding repetition of long, cumbersome types
