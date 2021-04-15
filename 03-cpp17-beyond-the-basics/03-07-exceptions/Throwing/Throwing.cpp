@@ -1,4 +1,4 @@
-#include "Noise.h"
+// #include "Noise.h"
 #include "Person.h"
 
 #include <vector>
@@ -13,10 +13,8 @@ int main()
 {
   vector<int> v;
   v.push_back(1);
-  Noise n1("beep 1");
   try
   {
-    Noise n2("bloop 2");
     Person Kate("Kate", "Gregory", 0);
     int j = v.at(99);
   }
@@ -24,7 +22,7 @@ int main()
   {
     cout << " out of range exception " << e.what();
   }
-  catch (exception &  e)
+  catch (exception &  e) // catching `e` by reference allows to catch more specific errors of error classes derived from `std::error` (e.g., `std::invalid_argument`), i.e., no slicing occurs
   {
     cout << e.what();
   }

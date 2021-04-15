@@ -76,7 +76,152 @@ cf. `Exceptions.cpp`
 
 ## What to Throw and Catch
 
+While in principle you simple throw an exception and then catch that exception, in practice, C++ allows you to throw and catch *anything* (e.g., `int`, `std::string`, instance of a class, etc.); this puts quite a burden on the developer
+  * The documentation may be helpful here -- but that presumes it exists in the first place (and, if so, it mentions the exception)!
 
+Despite the compiler's flexibilty with exceptions, the conventional practice is to use the class `std::exception` provided by the Standard Library
+  * `std::exception` is a base class to a hierarchy of more specific exception classes
+  * The Standard Library uses classes derived from `std::exception` when it is necessary to throw an exception (i.e., catch `std::exception` by reference but throw the derived classes)
 
+It is advisable to use the Standard Library exception classes hierarchy, or otherwise derive exceptions from them if necessary
 
+## `std::exception`
 
+`std::exception` is in the header `<exception>`
+  * N.B. It may be unnecessary to include it, however, because the Standard Library headers often include it already (e.g., `std::vector` throws `std::exception` under certain circumstances), although there is no harm in including it even in this scenario
+
+`std::exception` has a member function `what()` which returns a string that describes the error in a human-readable/loggable format
+
+`std::exception` has a number of derived classes, e.g.:
+  * `logic_error`
+  * `runtime_error`
+
+N.B. `logic_error` and `run_time` errors are called **marker classes** because they do not add any member variables or member functions, but rather simply provide the member function `what()`
+  * They are distinguished primarily by their name as a means to specify (i.e., "mark") the specific error in question, inasmuch as these different errors will typically require specific error-handling strategies
+
+### **DEMO: Throwing an Exception**
+
+cf. `/Throwing`
+
+## Unwinding the Stack
+
+When an exception is thrown, control is transferred immediately to the appropriate catch (skipping any code that would have normally been evaluated subsequently to the offending code in the caller)
+
+Additionally, a process called **stack unwinding** occurs when an exception is thrown
+  * If in a `try` block, everything local to the `try` block goes out of scope
+    * Destructors execute
+    * Control transfer to the `catch`
+  * If not in a `try` block, everything local to the executing function goes out of scope, and control returns to where that function was called from
+    * This process occurs recursively to find a caller with a `try` block
+
+If the preceding sequence gets all the way out to `main()`, then the user receives a dialog
+  * The process is more interesting if the code does end up in a `catch` block
+
+### **DEMO: Unwinding the Stack**
+
+cf. `/StackUnwinding`
+
+## RAII Revisited
+
+Stack unwinding prior to transferring control to a `catch` block is an example of what makes RAII such a powerful concept
+
+Consider the following examples:
+```cpp
+/* No RAII */
+try
+{
+  auto x = new X(Stuff);
+  // risky stuff -- throws an exception
+  delete x; // this statement is not reached
+} // `x` goes out of scope, but still has memory allocated on the free store -- memory leak (bad)!
+catch (exception& e)
+{
+  // react
+}
+
+/* With RAII */
+try
+{
+  auto x = make_unique<X>(Stuff);
+  // risky stuff -- throws an exception
+} // `x` gets destroyed automatically here prior to transferring control to the `catch` block
+catch (exception& e)
+{
+  // react
+}
+```
+
+Therefore, without RAII, it is much more complicated to manage exception handling when working with objects -- but with RAII, the process is much more simpler and streamlined (i.e., "exception-safe")
+
+## Exceptions Have a Cost
+
+While useful, exceptions are not a first-resort measure (e.g., validating user input with code logic is generally a better alterantive to using exceptions for this purpose)
+
+There is little or no cost to set up `try`/`catch` blocks if the exception is *not* thrown (i.e., application proceeds along the "happy path")
+
+However, if an exception *is* thrown, this requires a time expenditure (much more so than a simple guarding `if`)
+
+There is generally a tradeoff between correctness and performance
+  * If correctness is of little concern, error handling can be largely excluded to the benefit of fast execution
+  * Conversely, a serious error that can impact the user experience may be worth the expenditure of time to conduct appropriate error handling (e.g., via exceptions)
+
+Exceptions are most useful with a deep calling hierarchy (e.g., `a` calls `b` calls `c` calls `d` calls `e` etc.)
+  * Each caller must test a return value, preventing further calculations if something went wrong; this can take time too
+
+Using exceptions makes neater code that runs faster when everything goes well
+  * On the happy path, this generally requires less testing (e.g., extensive/exhaustive `if` guards)
+
+Exceptions are best for *rare occurrences* (e.g., disk is full, network went down, etc.)
+
+## `noexcept`
+
+### You Can Mark a Function as `noexcept`
+
+While there is an associated performance cost with setting up code that may throw an exception, the keyword `noexcept` can be used to annotate code that is not expected to throw an exception
+  * While `noexcept` appears to mean "will not throw an exception," it really means "will not throw an exception worth catching*
+
+N.B. The opposite semantics can also be achieved via `noexcept(false)` (used in template metaprogramming)
+
+`noexcept` provides ceratin advantages:
+  * expressivity
+  * performance
+
+### `noexcept` Functions That Throw?
+
+If a function marked `noexcept` *does* throw an exception...
+  * The app terminates/crashes
+  * No stack unwinding occurs
+  * No exceptions are caught (e.g., no opportunity to produce error logs)
+
+This situation is practical in certain cases (e.g., attempting to allocate memory when none is available)
+
+N.B. In general, `noexcept` is used to designate functions that reflect the appropriate semantics, rather than code that may still potentially throw an error
+
+## Enabling Moves with `noexcept`
+
+Most of the performance issues associated with exceptions occurring on the happy path are small (e.g., setting up a `try`/`catch`, using `noexcept`, etc.)
+
+However, there is one key scenario where using exceptions can be expensive: if a move operation throws, the enclosing operation cannot be rolled back
+  * For example, if resizing a vector, while moving elements from the smaller vector to the larger vector, if one of the move operations throws an exception, the vector code will undo what it did, however, it canont guarantee that all of the operations will be undone
+
+Consequently, many of the operations in the Standard Library that use move semantics will only call `noexcept` functions
+  * These operations generally use move constructors, move assignment operators, swap, etc. which are `noexcept`
+
+If your move operations (or things they call) are *not* `noexcept`, you will get a *copy* instead (which is much slower); therefore, it is imperative to mark these `noexcept` whenever possible to do so in order to use these semantics
+
+## Summary
+
+Exceptions handle unusual (i.e., exceptional) errors
+  * `try` sets up a context in which an exception might occur
+  * `throw` captures information about the problem and transfers control to a location where it can be resolved
+  * `catch` accepts the information from the thrown error and uses it
+
+Between the `throw` and the `catch`, locally scoped objects are cleaned up
+  * Destructors run
+
+While the compiler allows to `throw` and `catch` any arbitrary type, the best practice is to use the `std::exception` class (or something derived from it) instead
+  * Most Standard Library code throws objects derived from `std::exception`
+
+Exceptions should be caught in order from most specific to most general; furthermore, exceptions should be caught by reference (i.e., rather than by value) to avoid slicing
+
+Mark functions `noexcept` if they do not throw exceptions (especially if it is a move constructor, move assignment operator, or swap function, in order to ensure that move semantics are used rather than copying)
