@@ -16,4 +16,7 @@ void DoSomethingBetter() {
 int main() {
   // You should get a warning when compiling this code
   DoSomething();
+  cout << endl;
+  
+  DoSomethingBetter();
 }

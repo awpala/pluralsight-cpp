@@ -92,4 +92,39 @@ cf. `VariableTemplates.cpp`
 
 ### Codebase Evolution
 
+The source code of actively maintained software projects is *dynamic*, i.e., it changes over time
+
+C++14 introduced the attribute `[[deprecated]]`, which can be used to decorate an entity (e.g., function) that is still useable but being changed, e.g.,:
+```cpp
+[[deprecated]] // minimal version 
+void DoSomething() {
+  // code -- should not be used
+}
+
+[[deprecated("DoSomething is inefficient")]] // longer form to include custom message describing reason for deprecating
+void DoSomething() {
+  // code -- should not be used
+}
+```
+
+### **DEMO: Deprecating Code **
+
+cf. `Deprecated.cpp`
+
+## Summary
+
+C++14 introduced relaxed `constexpr` functions, which are executed at compile-time during compilation, rather than ordinary functions which execute at run-time during program execution
+
+Variable templates are a C++14 addition which complements the previous class and function templates
+
+The attribute `[[deprecated]]` is used to discourage use of deprecated features/entities in the codebase
+
+
+
+
+
+
+
+
+
 
