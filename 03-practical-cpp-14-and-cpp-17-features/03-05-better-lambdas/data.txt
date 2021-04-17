@@ -1,0 +1,10 @@
+*** Test file for the lambda sorting demo ***
+    ======================================
+This is a long line.
+Hello, my name is Giovanni Dicanio.
+The C=64 rocks!!!
+I love C++!
+C++ is a great language!
+ABC
+DEFGHIJK
+1234567890
