@@ -118,13 +118,3 @@ C++14 introduced relaxed `constexpr` functions, which are executed at compile-ti
 Variable templates are a C++14 addition which complements the previous class and function templates
 
 The attribute `[[deprecated]]` is used to discourage use of deprecated features/entities in the codebase
-
-
-
-
-
-
-
-
-
-
