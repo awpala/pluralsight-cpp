@@ -37,7 +37,7 @@ However, C++14 *relaxed* may of the highly-constraining `constexpr` requirements
   * Permitting declaration of local variables inside the function body
   * Permitting use of control flow statements (e.g., `for`, `if`, `switch`, etc.)
 
-### **DEMO: Relaxed `constexpr` Functions in Action
+### **DEMO: Relaxed `constexpr` Functions in Action**
 
 cf. `Fibonacci.cpp`
 
