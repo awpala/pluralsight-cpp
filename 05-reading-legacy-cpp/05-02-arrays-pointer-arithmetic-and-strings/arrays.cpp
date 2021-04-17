@@ -28,7 +28,7 @@ int main()
   dynamicnumbers[2] = 2;
   *(dynamicnumbers + 3) = 1; // equivalent array acces via `*(...).` -- however, note that this statement is accessing out of range (bad!), since `dynamicnumbers` only holds three elements
 
-	// idiom for determining array size -- used commonly in legacy code, but is highly error-prone
+  // idiom for determining array size -- used commonly in legacy code, but is highly error-prone
   int localsize = sizeof(numbers) / sizeof(numbers[0]);
   int freestoresize = sizeof(dynamicnumbers) / sizeof(dynamicnumbers[0]); // evaluates to `freestoresize == 1`, which is incorrect!
 
