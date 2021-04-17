@@ -107,7 +107,7 @@ void DoSomething() {
 }
 ```
 
-### **DEMO: Deprecating Code **
+### **DEMO: Deprecating Code**
 
 cf. `Deprecated.cpp`
 
