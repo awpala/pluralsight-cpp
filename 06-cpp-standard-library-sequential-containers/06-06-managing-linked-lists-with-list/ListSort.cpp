@@ -1,4 +1,4 @@
-// std::list Sorting ** BUG ** Demo
+// std::list Sorting
 
 #include <algorithm>
 using std::find;
