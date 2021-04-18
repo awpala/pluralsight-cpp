@@ -78,3 +78,11 @@ This course will explore the Standard Library algorithms by general categories:
 
 The course will wrap up with a "big picture" view of the header `<algorithm>`, and in particular exploring common conventions (e.g., naming, order of parameters, etc.) used by it
   * This facilitates with both comprehension and use/"muscle memory" of the Standard Library algorithms
+
+## Summary
+
+C++ has a smaller library than some languages, but "smaller" does not mean "small"
+
+The header `<algorithm>` is packed with great code that you can use
+  * You may never write a raw loop again!
+  * The real effort is in learning which algorithms *exist* in this header, what they are for, and how they can replace otherwise written-from-scratch code (e.g., raw loops)
