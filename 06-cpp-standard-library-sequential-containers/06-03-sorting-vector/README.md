@@ -11,7 +11,7 @@ To sort the elements of a `std::vector` object instance, this *could* be done wi
 However, in the particular case of sorting, this is unnecessary, as the Standard Library already provides an algorithm `std::sort()` for this purpose
   * The implementation of `std::sort()` is high-quality, performant, and well-tested
 
-### Use the Standard Library's algorithm `std::sort()`
+### Use the Standard Library Algorithm `std::sort()`
 
 `std::sort()` (via header `<algorithm>`) can be called with a single statement, e.g.,:
 ```cpp
