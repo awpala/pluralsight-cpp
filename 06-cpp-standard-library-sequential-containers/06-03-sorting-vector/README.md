@@ -64,7 +64,7 @@ Genericity is a key feature of the Standard Library algorithms (e.g., the algori
 
 Therefore, decoupling algorithms from containers provides an elegant and extensible design (e.g., reducing the need for redundant member functions duplicated across containers)
 
-## **DEMO: `std::sort()` in Action`
+## **DEMO: `std::sort()` in Action**
 
 cf. `Sort.cpp`
 
