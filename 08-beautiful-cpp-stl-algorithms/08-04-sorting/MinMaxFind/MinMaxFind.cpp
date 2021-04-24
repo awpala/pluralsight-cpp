@@ -8,7 +8,7 @@ using std::max_element;
 using std::sort;
 using std::lower_bound;
 using std::upper_bound;
-#include "Employee.h";
+#include "Employee.h"
 
 
 int main()
