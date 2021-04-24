@@ -18,7 +18,7 @@ sort(it1, it2, predicate);
 
 N.B. Typically, it is idiomatic to use a a lambda to express `predicate`
 
-### **DEMO: Sorting`
+### **DEMO: Sorting**
 
 cf. `/Sorting`
 
