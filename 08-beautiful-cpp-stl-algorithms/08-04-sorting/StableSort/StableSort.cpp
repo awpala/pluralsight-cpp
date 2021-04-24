@@ -5,7 +5,6 @@ using std::sort;
 using std::stable_sort;
 #include "Employee.h"
 
-using namespace std;
 
 int main()
 {
