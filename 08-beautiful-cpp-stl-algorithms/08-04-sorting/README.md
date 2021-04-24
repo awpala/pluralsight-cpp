@@ -85,9 +85,85 @@ cf. `/MinMaxFind`
 
 ## Shuffle
 
+The opposite of sorting is **shuffling**
 
+To perform shuffling in C++ via `std::shuffle()`, use the following:
+```cpp
+#include <random>
 
+// ... create collection
 
+// create a random device and a Mersenne Twister to use as a `generator`
+random_device randomdevice;
+mt19937 generator(randomdevice());
 
+// pass the `generator` to `std::shuffle()`
+std::shuffle(it1, it2, generator);
+```
 
+N.B. The Mersenne Twister is a **pseudorandom number generator** (**PRNG**), and is one of the most widely used PRNGs
+  * Its name derives from the fact that its period length is chosen to be a Mersenne prime (encoded with `19937` bits)
 
+N.B. C++17 additionally provides the Standard Library algorithm function `std::sample()` to randomly select an element from a collection without requiring to shuffle first 
+
+### **DEMO: Shuffle**
+
+cf. `Shuffle.cpp`
+
+## Partial Sorting
+
+Given a very large collection, it may not be necessary to sort it *entirely*
+
+The Standard Library algorithm function `std::partial_sort()` is useful for this purpose (e.g., pagination, with sorting of only the currently visible elements)
+
+`std::partial_sort()` sorts the *n* smallest elements and places them at the beginning of the collection, and the subsequent (unordered) elements are larger than these
+
+`std::partial_sort()` has the following general sort (where `itBeginUnsorted` defines where the unsorted list begins):
+```cpp
+std::partial_sort(it1, itBeginUnsorted, it2);
+```
+
+The corresponding check can be performed via `std::is_sorted_until()`, which determines how far into the collection the elements are sorted
+
+Additionally, `std::partial_sort_copy()` copies the sorted portion into another collection
+
+N.B. There is no stable version of `std::partial_sort()` provided in C++; all of the subsequent unsorted elements occur in a non-deterministic order
+
+### **DEMO: Partial Sorting**
+
+cf. `PartialSorting.cpp`
+
+## *n*th Element
+
+The Standard Library algorithm function `std::nth_element()` performs a **partitioning**, whereby the specified "pivot" position `n` will contain the element at that position in its sorted-order position with respect to the collection, and subsequently elements *before* position `n` will be *smaller* than this element (not in sorted order) and elements *after* will be *larger* than this element (not in sorted order)
+
+`std::nth_element()` has the following general form (where `itNthElement` is an iterator to the element in the collection to be placed in position `n`):
+```cpp
+std::nth_element(it1, itNthElement, it2)
+```
+
+### **DEMO: *n*th Element**
+
+cf. `NthElement.cpp`
+
+## What Are You Trying to Do?
+
+As indicated at the beginning of this section, the critical question to ask when developing a program is: *What are you trying to do?*
+
+To this end, many useful features are provided via the Standard Library algorithm functions--the more familiar these become, the more productive your C++ development will correspondingly become as well
+
+## Summary
+
+Sorting is trivial to perform in C++ for elements with an overloaded operator `<`
+
+Provide a lambda predicate for complete control
+
+When sorting multiple times (i.e., with respect to multiple attributes), consider using `std::stable_sort()` (e.g., for tie-breaking)
+
+Use `std::is_sorted()` to determine if the collection is already sorted (i.e., without requiring to explicitly sort it first)
+
+In a *sorted* collection, *faster* searches are possible
+
+Shuffling ("unsorting") can also be performed via `std::shuffle()`
+
+`std::partial_sort()` provides the ability to perform partitioning into groups without fully sorting the collection
