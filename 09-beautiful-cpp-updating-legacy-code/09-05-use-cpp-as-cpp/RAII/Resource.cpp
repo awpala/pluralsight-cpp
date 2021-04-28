@@ -14,7 +14,7 @@ Resource::Resource(char const * const filepath)
     arraylength = strtol(line, &end, 10);
     numbers = new int[arraylength];
   }
-}
+} // resource is acquired here
 
 bool Resource::OK()
 {
@@ -63,4 +63,4 @@ Resource::~Resource()
   {
     fclose(f);
   }
-}
+} // resource is released here
